@@ -1,4 +1,4 @@
-FROM centos:5
+FROM centos:6
 MAINTAINER Matt McCormick <matt.mccormick@kitware.com>
 
 ADD etc/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo
@@ -12,8 +12,8 @@ RUN yum update -y && \
    gcc \
    gcc-c++ \
    gettext \
+   perl perl-devel perl-CPAN \
    openssl-devel \
-   perl \
    wget \
    zlib-devel \
    bzip2-devel
