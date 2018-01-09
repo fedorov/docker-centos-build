@@ -1,4 +1,4 @@
-FROM centos:5
+FROM centos:6
 MAINTAINER Matt McCormick <matt.mccormick@kitware.com>
 
 RUN yum update -y && \
