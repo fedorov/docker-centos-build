@@ -65,16 +65,16 @@ RUN echo '/usr/local/lib' >> /etc/ld.so.conf.d/usr-local.conf && \
     ldconfig
 
 # Build and install Python from source.
-WORKDIR /usr/src
-ENV PYTHON_VERSION 2.7.12
-RUN wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz && \
-  tar xvzf Python-${PYTHON_VERSION}.tgz && \
-  cd Python-${PYTHON_VERSION} && \
-  ./configure --enable-shared && \
-  make -j$(grep -c processor /proc/cpuinfo) && \
-  make install && \
-  ldconfig && \
-  cd .. && rm -rf Python-${PYTHON_VERSION}*
+#WORKDIR /usr/src
+#ENV PYTHON_VERSION 2.7.12
+#RUN wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz && \
+#  tar xvzf Python-${PYTHON_VERSION}.tgz && \
+#  cd Python-${PYTHON_VERSION} && \
+#  ./configure --enable-shared && \
+#  make -j$(grep -c processor /proc/cpuinfo) && \
+#  make install && \
+#  ldconfig && \
+#  cd .. && rm -rf Python-${PYTHON_VERSION}*
 
 # Build and install ninja from source.
 RUN git clone https://github.com/martine/ninja.git && \
