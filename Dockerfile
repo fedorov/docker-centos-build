@@ -1,4 +1,4 @@
-FROM centos:6
+FROM centos:7
 MAINTAINER Matt McCormick <matt.mccormick@kitware.com>
 
 #ADD etc/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo
@@ -18,15 +18,19 @@ RUN yum update -y && \
    zlib-devel \
    bzip2-devel
 
-WORKDIR /etc/yum.repos.d
-RUN wget http://people.centos.org/tru/devtools-2/devtools-2.repo
-RUN yum install -y devtoolset-2-gcc \
-  devtoolset-2-binutils \
-  devtoolset-2-gcc-gfortran \
-  devtoolset-2-gcc-c++
-ENV CC /opt/rh/devtoolset-2/root/usr/bin/gcc
-ENV CXX /opt/rh/devtoolset-2/root/usr/bin/g++
-ENV FC /opt/rh/devtoolset-2/root/usr/bin/gfortran
+# Can replace with devtools-7, this works:
+# (from http://linuxpitstop.com/install-and-use-red-hat-developer-toolset-4-1-on-centos-7/)
+# yum install centos-release-scl
+# yum install devtoolset-7
+#WORKDIR /etc/yum.repos.d
+#RUN wget http://people.centos.org/tru/devtools-2/devtools-2.repo
+#RUN yum install -y devtoolset-2-gcc \
+#  devtoolset-2-binutils \
+#  devtoolset-2-gcc-gfortran \
+#  devtoolset-2-gcc-c++
+#ENV CC /opt/rh/devtoolset-2/root/usr/bin/gcc
+#ENV CXX /opt/rh/devtoolset-2/root/usr/bin/g++
+#ENV FC /opt/rh/devtoolset-2/root/usr/bin/gfortran
 
 # Build and install git from source.
 WORKDIR /usr/src
